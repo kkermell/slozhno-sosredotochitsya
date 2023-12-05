@@ -2,4 +2,62 @@
 
 .page {
   /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
+  font-family: "IBM Plex mono", sans-serif;
+  color: var(--text-color);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 130%;
+  position: relative;
+  background-color: var(--background-color);
+}
+
+.header {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: repeat(3, 1fr);
+  background-image: url(../images/cover-image-dark.png);
+  background-position: center;
+  background-size: cover;
+}
+
+.rec {
+  position: absolute;
+  inset-inline-end: 0;
+  color: var(--accent-color);
+  display: flex;
+}
+
+.rec::before {
+  content: "";
+  height: 9px;
+  width: 9px;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+  box-shadow: 0 0 3px 3px var(--accent-color);
+  margin: 8px;
+}
+
+.header__theme-menu {
+  color: var(--accent-color);
+}
+
+.header__theme-menu-button {
+  background-color: transparent;
+  border: none;
+  text-transform: lowercase;
+  line-height: 100%;
+}
+
+.header__theme-menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.header__title {
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  font-weight: 700;
+  line-height: 82.5%;
+  color: var(--header-color);
 }
