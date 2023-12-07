@@ -1,63 +1,144 @@
-/* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
-
 .page {
-  /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
-  font-family: "IBM Plex mono", sans-serif;
-  color: var(--text-color);
+  font-family: var(--main-font, "IMB Plex mono", mono-space);
+  color: var(--text-color, #f1b2ce);
   font-size: 18px;
   font-weight: 400;
   line-height: 130%;
+  background-color: var(--background-color, #000028);
+  margin: 0 auto;
+  background-image: var(--background-image);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* Общие стили */
+
+.decorated-zone {
+  min-block-size: 100vh;
+  padding: clamp(0.625rem, 2.545vw + 0.029rem, 1.25rem);
   position: relative;
-  background-color: var(--background-color);
+}
+
+.decorated-zone::before {
+  content: "";
+  position: absolute;
+  block-size: 25px;
+  inline-size: 25px;
+  inset-inline-end: clamp(0.625rem, 2.545vw + 0.029rem, 1.25rem);
+  inset-block-start: clamp(0.625rem, 2.545vw + 0.029rem, 1.25rem);
+  border-inline-end: 1px solid var(--button-color, #ff0070);
+  border-block-start: 1px solid var(--button-color, #ff0070);
+}
+
+.decorated-zone::after {
+  content: "";
+  position: absolute;
+  block-size: 25px;
+  inline-size: 25px;
+  inset-inline-start: clamp(0.625rem, 2.545vw + 0.029rem, 1.25rem);
+  inset-block-end: clamp(0.625rem, 2.545vw + 0.029rem, 1.25rem);
+  border-inline-start: 1px solid var(--button-color, #ff0070);
+  border-block-end: 1px solid var(--button-color, #ff0070);
+}
+
+.slogo-decoration {
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  line-height: 82.5%;
+  color: var(--slogo-text-color, #d800ff);
+}
+
+.title-decor {
+  background-color: var(--accent-color, #ff0070);
+  color: var(--title-text-color);
+  font-weight: 700;
+}
+
+/* Шапка */
+
+.header__decorated {
+  position: absolute;
+  inset-inline-end: clamp(0.625rem, 2.545vw + 0.029rem, 1.25rem);
+  inset-block-start: clamp(0.625rem, 2.545vw + 0.029rem, 1.25rem);
+}
+
+.header__decorated::after {
+  content: "REC";
+  position: absolute;
+  color: var(--button-color, #ff0070);
+  inset-inline-end: 28px;
+}
+
+.header__decorated::before {
+  content: "";
+  position: absolute;
+  inline-size: 9px;
+  block-size: 9px;
+  border-radius: 50%;
+  background-color: var(--button-color, #ff0070);
+  inset-inline-end: 9px;
+  inset-block-start: 8px;
+  box-shadow: 0 0 10px 3px var(--button-color);
 }
 
 .header {
-  padding: 10px;
   display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: repeat(3, 1fr);
-  background-image: url(../images/cover-image-dark.png);
-  background-position: center;
-  background-size: cover;
-}
-
-.rec {
-  position: absolute;
-  inset-inline-end: 0;
-  color: var(--accent-color);
-  display: flex;
-}
-
-.rec::before {
-  content: "";
-  height: 9px;
-  width: 9px;
-  background-color: var(--accent-color);
-  border-radius: 50%;
-  box-shadow: 0 0 3px 3px var(--accent-color);
-  margin: 8px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr minmax(min-content, max-content) 1fr;
+  align-items: center;
+  grid-template-areas:
+    "header-nav"
+    "header-title"
+    "header-subtitle";
 }
 
 .header__theme-menu {
-  color: var(--accent-color);
-}
-
-.header__theme-menu-button {
-  background-color: transparent;
-  border: none;
-  text-transform: lowercase;
-  line-height: 100%;
+  grid-area: header-nav;
+  justify-self: end;
 }
 
 .header__theme-menu-list {
   display: flex;
   flex-direction: column;
-  gap: 13px;
+  gap: 10px;
+}
+
+.header__theme-menu-button {
+  font-family: inherit;
+  font-size: inherit;
+  text-transform: lowercase;
+  color: var(--button-color, #ff0070);
+  background-color: transparent;
+  border: none;
+  padding-inline: 13px;
+  line-height: 100%;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.header__theme-menu-button:hover {
+  border: 1px solid var(--button-hover-color, rgba(255, 0, 112, 0.4));
+}
+
+.header__theme-menu-button_active {
+  border: 1px solid var(--button-color, #ff0070);
+  pointer-events: none;
+}
+
+.header__theme-menu-button:focus {
+  outline: none;
+}
+
+.header__theme-menu-button:focus-visible {
+  border-block-end: 1px solid var(--button-color, #ff0070);
 }
 
 .header__title {
-  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
-  font-weight: 700;
-  line-height: 82.5%;
-  color: var(--header-color);
+  grid-area: header-title;
+  text-shadow: 4px 4px 0 var(--slogo-text-shadow-color, #ff0070);
+}
+
+.header__subtitle {
+  grid-area: header-subtitle;
 }
