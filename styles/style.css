@@ -114,7 +114,6 @@
   text-transform: lowercase;
   color: var(--button-color, #ff0070);
   background-color: transparent;
-  border: none;
   padding-inline: 13px;
   line-height: 100%;
   cursor: pointer;
