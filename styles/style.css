@@ -1,5 +1,5 @@
 .page {
-  font-family: var(--main-font, "IMB Plex mono", mono-space);
+  font-family: var(--main-font, "IMB Plex mono", monospace);
   color: var(--text-color, #f1b2ce);
   font-size: 18px;
   font-weight: 400;
@@ -300,6 +300,10 @@
     grid-template-areas:
       "content-title content-list"
       "content-title content-list";
+  }
+
+  .content__card {
+    grid-area: content-list;
   }
 
   .content__section-block {
